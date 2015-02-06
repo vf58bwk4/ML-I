@@ -1,0 +1,6 @@
+MCDEF DVA AS <dva>
+RAZ
+DVA
+-2
+MCSET S10 = 1
+-2
