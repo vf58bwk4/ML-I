@@ -1,0 +1,14 @@
+MCSET S18=2
+MCSKIP MT,<>
+MCSKIP + WITHS NL
+MCSKIP ;WITH; NL
+MCINS %.
+MCINS U,*:
+;;
+MCDEF ABC NL AS <+
+MCDEF Temp AS LMN
+protected: %A1.
+unprotected: *A1:
+>
+;;
+ABC Temp
