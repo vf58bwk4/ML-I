@@ -1,46 +1,26 @@
-MCSET S18=2
+MCSKIP ; WITH ; NL
+MCINS %.
 MCSKIP MT,<>
 MCSKIP + WITHS NL
-MCSKIP ;WITH; NL
-MCINS %.
+MCSET S18=2
 ;;
-MCDEF WA WITHS () AS <+
-WA:%WA1. ;; don't evaluate macros in arguments, remove surrounding spaces
->
-MCDEF A WITHS () AS <+
-A:%A1. ;; evaluate macros in arguments, remove surrounding spaces
->
-MCDEF WB WITHS () AS <+
-WB:%WB1.  ;; don't evaluate macros in arguments, don't remove surrounding spaces
->
-MCDEF B WITHS () AS <+
-B:%B1.  ;; evaluate macros in arguments, don't remove surrounding spaces
->
-MCDEF MCFOR = OPT STEP N1 OR N1 TO ALL NL REPEAT
-AS <+
-MCSET %A1. = %A2.
-MCSET T3 = 1
-MCGO L1 IF T1 EN 4
-MCSET T3 = %A3.
-MCGO L1 IF T3 GR 0
-%L2.MCGO L0 IF %AT1-1. GR %A1.
-%AT1.MCSET %A1. = %A1. + T3
-MCGO L2
-%L1. MCGO L0 IF %A1. GR %AT1-1.
-%AT1.MCSET %A1. = %A1. + T3
-MCGO L1
->
-MCDEF MANYARGS WITHS ( N1 OPT , N1 OR ) ALL AS <+
-// %WD0.+
-MCFOR P1 = 1 TO %T1.
-%WBP1.%WDP1.+
-REPEAT
->
+MCDEF WA WITHS () AS <argument:[%WA1.]>
+MCDEF A WITHS () AS <argument:[%A1.]>
+MCDEF WB WITHS () AS <argument:[%WB1.]>
+MCDEF B WITHS () AS <argument:[%B1.]>
+;;
+Don't evaluate macros in arguments, remove surrounding spaces
+ Call:  <WA( WA( WA( an argument ) ) )>
+ Result: WA( WA( WA( an argument ) ) )
 
-WA( WA( WA( an argument ) ) )
-A(   A(  A( an argument ) ) )
-WB( WB( WB( an argument ) ) )
-B(   B(  B( an argument ) ) )
+Evaluate macros in arguments, remove surrounding spaces
+ Call:  <A(   A(  A( an argument ) ) )>
+ Result: A(   A(  A( an argument ) ) )
 
-MANYARGS ( )
-MANYARGS (1, 2 ,3,4)
+Don't evaluate macros in arguments, don't remove surrounding spaces
+ Call:  <WB( WB( WB( an argument ) ) )>
+ Result: WB( WB( WB( an argument ) ) )
+
+Evaluate macros in arguments, don't remove surrounding spaces
+ Call:  <B(   B(  B( an argument ) ) )>
+ Result: B(   B(  B( an argument ) ) )

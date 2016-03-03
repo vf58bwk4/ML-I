@@ -1,0 +1,26 @@
+MCSKIP ; WITH ; NL
+MCINS %.
+MCSKIP MT,<>
+MCSKIP + WITHS NL
+MCSET S18=2
+;;
+MCDEF WA WITHS () AS <argument:[%WA1.]>
+MCDEF A WITHS () AS <argument:[%A1.]>
+MCDEF WB WITHS () AS <argument:[%WB1.]>
+MCDEF B WITHS () AS <argument:[%B1.]>
+;;
+Don't evaluate macros in arguments, remove surrounding spaces
+ Call:  <WA( WA( WA( an argument ) ) )>
+ Result: WA( WA( WA( an argument ) ) )
+
+Evaluate macros in arguments, remove surrounding spaces
+ Call:  <A(   A(  A( an argument ) ) )>
+ Result: A(   A(  A( an argument ) ) )
+
+Don't evaluate macros in arguments, don't remove surrounding spaces
+ Call:  <WB( WB( WB( an argument ) ) )>
+ Result: WB( WB( WB( an argument ) ) )
+
+Evaluate macros in arguments, don't remove surrounding spaces
+ Call:  <B(   B(  B( an argument ) ) )>
+ Result: B(   B(  B( an argument ) ) )

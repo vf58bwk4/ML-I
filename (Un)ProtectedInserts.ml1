@@ -1,0 +1,14 @@
+MCSKIP ; WITH ; NL
+MCINS %.
+MCSKIP MT,<>
+MCSKIP + WITHS NL
+MCSET S18=2
+;;
+MCINS U,$.
+MCDEF SHOW NL AS <+
+MCDEF %A1. AS unprotected
+Protected insert: %A1.
+Unprotected insert: $A1.
+>
+;;
+SHOW protected
