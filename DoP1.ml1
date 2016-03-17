@@ -12,6 +12,9 @@ MCSET P1 = 1
 MCSET P1 = P1 + 1
 MCGO L1
 >
+;;
+;; APDU .sz comment
+MCSKIP DT,/WITH/ NL
 ;; Test
 MCDEF OPT SEL OR SEL WITHS [] ALL NL AS <+
 </></> %WD0.DOP1 %T1. TIMES %WBP1.%WDP1.
